@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor><authoring_tool>HouseExtensions sketchup generator</authoring_tool></contributor>
+    <created>2026-10-07T00:00:00Z</created>
+    <unit meter="1" name="meter"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="brick-effect">
+      <profile_COMMON><technique sid="common"><lambert>
+        <diffuse><color sid="diffuse">0.78 0.66 0.52 1</color></diffuse>
+      </lambert></technique></profile_COMMON>
+    </effect>
+    <effect id="brick_existing-effect">
+      <profile_COMMON><technique sid="common"><lambert>
+        <diffuse><color sid="diffuse">0.72 0.72 0.72 1</color></diffuse>
+      </lambert></technique></profile_COMMON>
+    </effect>
+    <effect id="roof-effect">
+      <profile_COMMON><technique sid="common"><lambert>
+        <diffuse><color sid="diffuse">0.28 0.3 0.33 1</color></diffuse>
+      </lambert></technique></profile_COMMON>
+    </effect>
+    <effect id="paving-effect">
+      <profile_COMMON><technique sid="common"><lambert>
+        <diffuse><color sid="diffuse">0.8 0.8 0.78 1</color></diffuse>
+      </lambert></technique></profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="brick-material" name="Brick (existing)">
+      <instance_effect url="#brick-effect"/>
+    </material>
+    <material id="brick_existing-material" name="Adjoining dwelling">
+      <instance_effect url="#brick_existing-effect"/>
+    </material>
+    <material id="roof-material" name="Roof (slate/membrane)">
+      <instance_effect url="#roof-effect"/>
+    </material>
+    <material id="paving-material" name="Paving">
+      <instance_effect url="#paving-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="House-geo" name="House">
+      <mesh>
+        <source id="House-pos">
+          <float_array id="House-pos-array" count="30">0 0 0 6 0 0 6 8.5 0 0 8.5 0 0 0 2.7 6 0 2.7 6 8.5 2.7 0 8.5 2.7 0 4.25 6.2 6 4.25 6.2</float_array>
+          <technique_common>
+            <accessor source="#House-pos-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="House-verts">
+          <input semantic="POSITION" source="#House-pos"/>
+        </vertices>
+        <triangles material="brick-material" count="20">
+          <input semantic="VERTEX" source="#House-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 9 4 9 8 6 7 8 6 8 9 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7 0 3 7 0 7 8 0 8 4 1 2 6 1 6 9 1 9 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Adjoining_dwelling-geo" name="Adjoining dwelling">
+      <mesh>
+        <source id="Adjoining_dwelling-pos">
+          <float_array id="Adjoining_dwelling-pos-array" count="30">-6 0 0 0 0 0 0 8.5 0 -6 8.5 0 -6 0 2.7 0 0 2.7 0 8.5 2.7 -6 8.5 2.7 -6 4.25 6.2 0 4.25 6.2</float_array>
+          <technique_common>
+            <accessor source="#Adjoining_dwelling-pos-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Adjoining_dwelling-verts">
+          <input semantic="POSITION" source="#Adjoining_dwelling-pos"/>
+        </vertices>
+        <triangles material="brick_existing-material" count="20">
+          <input semantic="VERTEX" source="#Adjoining_dwelling-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 9 4 9 8 6 7 8 6 8 9 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7 0 3 7 0 7 8 0 8 4 1 2 6 1 6 9 1 9 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Chimney-geo" name="Chimney">
+      <mesh>
+        <source id="Chimney-pos">
+          <float_array id="Chimney-pos-array" count="24">5.1 4 0 5.9 4 0 5.9 4.5 0 5.1 4.5 0 5.1 4 6.9 5.9 4 6.9 5.9 4.5 6.9 5.1 4.5 6.9</float_array>
+          <technique_common>
+            <accessor source="#Chimney-pos-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Chimney-verts">
+          <input semantic="POSITION" source="#Chimney-pos"/>
+        </vertices>
+        <triangles material="brick-material" count="12">
+          <input semantic="VERTEX" source="#Chimney-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Extension-geo" name="Extension">
+      <mesh>
+        <source id="Extension-pos">
+          <float_array id="Extension-pos-array" count="24">0.5 -4 0 5.5 -4 0 5.5 0 0 0.5 0 0 0.5 -4 2.45 5.5 -4 2.45 5.5 0 2.7 0.5 0 2.7</float_array>
+          <technique_common>
+            <accessor source="#Extension-pos-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Extension-verts">
+          <input semantic="POSITION" source="#Extension-pos"/>
+        </vertices>
+        <triangles material="brick-material" count="12">
+          <input semantic="VERTEX" source="#Extension-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Extension_roof-geo" name="Extension roof">
+      <mesh>
+        <source id="Extension_roof-pos">
+          <float_array id="Extension_roof-pos-array" count="24">0.45 -4.05 0 5.55 -4.05 0 5.55 0 0 0.45 0 0 0.45 -4.05 2.57 5.55 -4.05 2.57 5.55 0 2.82 0.45 0 2.82</float_array>
+          <technique_common>
+            <accessor source="#Extension_roof-pos-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Extension_roof-verts">
+          <input semantic="POSITION" source="#Extension_roof-pos"/>
+        </vertices>
+        <triangles material="roof-material" count="12">
+          <input semantic="VERTEX" source="#Extension_roof-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Patio-geo" name="Patio">
+      <mesh>
+        <source id="Patio-pos">
+          <float_array id="Patio-pos-array" count="24">0.3 -7 -0.15 5.7 -7 -0.15 5.7 -4.05 -0.15 0.3 -4.05 -0.15 0.3 -7 0 5.7 -7 0 5.7 -4.05 0 0.3 -4.05 0</float_array>
+          <technique_common>
+            <accessor source="#Patio-pos-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Patio-verts">
+          <input semantic="POSITION" source="#Patio-pos"/>
+        </vertices>
+        <triangles material="paving-material" count="12">
+          <input semantic="VERTEX" source="#Patio-verts" offset="0"/>
+          <p>0 3 2 0 2 1 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="HouseExtensions">
+      <node id="House" name="House" type="NODE">
+        <instance_geometry url="#House-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="brick-material" target="#brick-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Adjoining_dwelling" name="Adjoining dwelling" type="NODE">
+        <instance_geometry url="#Adjoining_dwelling-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="brick_existing-material" target="#brick_existing-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Chimney" name="Chimney" type="NODE">
+        <instance_geometry url="#Chimney-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="brick-material" target="#brick-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Extension" name="Extension" type="NODE">
+        <instance_geometry url="#Extension-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="brick-material" target="#brick-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Extension_roof" name="Extension roof" type="NODE">
+        <instance_geometry url="#Extension_roof-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="roof-material" target="#roof-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Patio" name="Patio" type="NODE">
+        <instance_geometry url="#Patio-geo">
+          <bind_material><technique_common>
+            <instance_material symbol="paving-material" target="#paving-material"/>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene><instance_visual_scene url="#Scene"/></scene>
+</COLLADA>
